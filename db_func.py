@@ -20,6 +20,20 @@ def emp_table():
     conn.commit()
     conn.close()
 
+def wage_table():
+    cursor, conn = set_conn()
+    cursor.execute(
+            """
+                Create table if not exists wages (
+                            emp_id integer primary key,
+                            name text not null,
+                            total_wage real not null,
+                            Foreign Key (emp_id) references employees (id)           
+                            )
+            """
+                )
+    conn.commit()
+    conn.close()
 
 def emp_value(name, ratee, hours):
     cursor, conn = set_conn()
