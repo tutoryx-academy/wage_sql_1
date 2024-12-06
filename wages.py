@@ -1,26 +1,5 @@
-import sqlite3
+from db_func import emp_table, emp_value
 
-conn = sqlite3.connect('employees.db')
+emp_table()
 
-cursor = conn.cursor()
-
-cursor.execute(
-        """
-            Create table if not exists employees (
-                        id integer primary key autoincrement,
-                        name text not null,
-                        rate real not null,
-                        hours real not null           
-                        )
-        """
-               )
-
-cursor.execute(
-    """
-        INSERT into employees (name, rate, hours) values ('Alice','20','35')
-    """
-)
-
-conn.commit()
-
-conn.close()
+emp_value('Alice','20','35')
